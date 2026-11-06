@@ -1,0 +1,17 @@
+model: convlstm
+exp_name: convlstm_baseline
+
+learning_rate: 1.0e-3
+
+model_args:
+  in_dim: 6
+  out_channels: 6
+  in_channels: 23       
+  height: 140
+  width: 124
+  num_layers: 4
+  num_hidden: 144
+  kernel_size: [5, 5]
+  bias: true
+  layer_norm: true
+  time_embed_d: 16

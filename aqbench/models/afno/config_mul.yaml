@@ -1,0 +1,22 @@
+model: afno
+exp_name: afno_multi
+learning_rate: 2.0e-4
+
+use_compile: false
+
+model_args:
+  in_channels: 23         
+  height:      140
+  width:       124
+  Tin:         6
+  Tout:        6
+  embed_dim:   432
+  depth:       8
+  mlp_ratio:   4.0
+  num_blocks:  8
+  patch_size:  2
+  sparsity_threshold:         0.01
+  hard_thresholding_fraction: 1.0
+  double_skip:                true
+  dropout:                    0.0
+  time_embed_d: 16

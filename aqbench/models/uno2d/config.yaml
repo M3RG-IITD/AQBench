@@ -1,0 +1,22 @@
+model: uno2d
+exp_name: uno2d_pm25
+learning_rate: 5.0e-4
+
+use_compile: false
+
+model_args:
+  in_channels: 21
+  Tin: 6
+  Tout: 6
+  height: 140
+  width: 124
+  hidden_channels: 98
+  n_layers: 4
+  uno_out_channels: [98, 98, 98, 98]
+  uno_n_modes: [[16, 16], [16, 16], [16, 16], [16, 16]]
+  uno_scalings: [[1, 1], [0.5, 0.5], [2, 2], [1, 1]]
+  lifting_channel_ratio: 2
+  projection_channel_ratio: 2
+  channel_mlp_expansion: 0.5
+  channel_mlp_dropout: 0.1
+  time_embed_d: 16

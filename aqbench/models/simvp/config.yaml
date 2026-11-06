@@ -1,0 +1,21 @@
+model: simvp
+exp_name: simvp_pm25
+learning_rate: 5.0e-4
+
+use_compile: false
+
+model_args:
+  in_channels:  21
+  height:       140
+  width:        124
+  Tin:          6
+  Tout:         6
+
+  hid_S:        64          
+  hid_T:        256       
+  N_S:          4          
+  N_T:          8          
+  incep_ker:    [3, 5, 7, 9]
+  groups:       4
+  num_groups:   8
+  time_embed_d: 16

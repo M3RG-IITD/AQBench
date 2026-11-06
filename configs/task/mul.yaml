@@ -1,0 +1,45 @@
+raw_dir: data/raw
+task_name: mul
+
+Tin: 6
+Tout: 6
+
+num_workers: 1
+
+
+seed: 42
+
+constraint_weight: 0
+
+input_features:
+  - pm25
+  - q2
+  - t2
+  - u10
+  - v10
+  - rainc
+  - rainnc
+  - swdown
+  - pblh
+  - no2
+  - co
+  - psfc
+  - NOx_e
+  - NOx_finn
+  - NH3_e
+  - NH3_finn
+  - PM25_e
+  - PM25_finn
+  - NMVOC_e
+  - NMVOC_finn
+  - SO2_e
+  - SO2_finn
+  - bio
+  
+target_features:
+  - pm25
+  - no2
+  - co
+
+
+

@@ -1,0 +1,8 @@
+model: persistence
+exp_name: persistence_baseline
+
+model_args:
+  in_dim: 1
+  out_channels: 1
+  in_channels: 25
+  num_targets: 1

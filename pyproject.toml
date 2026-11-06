@@ -1,0 +1,98 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "aqbench"
+version = "0.0.1"
+description = "Air Quality Benchmark"
+authors = [
+  { name = "m3rg" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License"
+]
+requires-python = "~=3.11"
+
+# ---------------------------------------------------------------------------
+# Core dependencies — required to run any part of the pipeline
+# ---------------------------------------------------------------------------
+dependencies = [
+    # Deep learning
+    # NOTE: Install PyTorch separately with the correct CUDA wheel:
+    #   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+    # The entries below are listed for documentation and editable-install
+    # purposes; they resolve to CPU-only wheels from PyPI if installed without
+    # the CUDA index URL.
+    "torch>=2.0",
+    "torchvision>=0.15",
+
+    # Scientific computing
+    "numpy>=1.24",
+    "scipy>=1.11",
+
+    # Data I/O
+    "pandas>=2.0",
+    "h5py>=3.9",
+    "pyyaml>=6.0",
+    "pyarrow>=14.0",       # pandas parquet backend (read_parquet)
+    "fastparquet>=2023.8", # explicit engine used in prepare_data.py: engine="fastparquet"
+
+    # Model building blocks
+    "einops>=0.7",         # rearrange() used across multiple models
+    "timm>=0.9",           # DropPath, trunc_normal_, to_2tuple (swin, afno, transolver, …)
+
+    # Training utilities
+    "tqdm>=4.65",
+    "loguru>=0.7",
+
+    # Config & CLI
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "typer>=0.9",
+]
+
+# ---------------------------------------------------------------------------
+# Optional dependencies — only required for specific models
+# ---------------------------------------------------------------------------
+[project.optional-dependencies]
+
+# Required for the RegularLAMO model (regular_lamo/)
+lamo = [
+    "mamba-ssm>=1.2",      # mamba_ssm.ops.triton.ssd_combined
+]
+
+# Required for the CoNO model (cono/)
+cono = [
+    "torch-frft>=0.1",     # torch_frft.dfrft_module.dfrft
+    "torchcomplex>=0.2",   # torchcomplex.nn
+]
+
+# Everything above combined — install all optional models
+all-models = [
+    "aqbench[lamo,cono]",
+]
+
+# Development tools — linting, formatting, docs
+dev = [
+    "ruff>=0.4",
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.0",
+]
+
+
+[tool.ruff]
+line-length = 99
+src = ["aqbench"]
+include = ["pyproject.toml", "aqbench/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["aqbench"]
+force-sort-within-sections = true
+

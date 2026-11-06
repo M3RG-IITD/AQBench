@@ -1,0 +1,21 @@
+model: transolver
+exp_name: transolver_pm25
+learning_rate: 1.0e-4     
+
+use_compile: false
+
+model_args:
+  in_channels: 21          
+  height:      140
+  width:       124
+  Tin:         6
+  Tout:        6
+
+  n_hidden:  256          
+  n_layers:  8
+  n_heads:   8            
+  slice_num: 64            
+  mlp_ratio: 4
+  dropout:   0.0
+
+  time_embed_d: 16

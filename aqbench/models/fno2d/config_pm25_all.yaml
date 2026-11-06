@@ -1,0 +1,16 @@
+model: fno2d
+
+seed: 42
+epochs: 200
+learning_rate: 0.0002
+batch_size: 192
+
+model_args:
+  in_channels: 24
+  modes1: 12
+  modes2: 12
+  hidden_channels: 156           
+  n_layers: 4
+  lifting_channel_ratio: 2       
+  projection_channel_ratio: 2   
+  channel_mlp_expansion: 1       

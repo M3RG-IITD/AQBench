@@ -1,0 +1,19 @@
+model: cono
+exp_name: cono_pm25
+learning_rate: 2.0e-4   
+
+use_compile: false       
+
+model_args:
+  in_channels:   21       
+  height:        140
+  width_spatial: 124
+  Tin:           6
+  Tout:          6
+
+  num_basis:  16
+  d_model:    84        
+  n_layers:   4
+  mlp_hidden: 248
+
+  time_embed_d: 16

@@ -1,0 +1,21 @@
+model: unet
+exp_name: unet_pm25
+learning_rate: 1.0e-3
+
+use_compile: false
+
+model_args:
+  in_channels: 21
+  height:      140
+  width:       124
+  Tin:         6
+  Tout:        6
+
+  base_channels:    48       
+  channel_mult:     [1, 2, 4, 8]
+  depths:           [2, 2, 2, 2]
+  depths_decoder:   [2, 2, 2]
+  bottleneck_depth: 2
+  num_groups:       8
+  dropout:          0.0
+  time_embed_d:     16

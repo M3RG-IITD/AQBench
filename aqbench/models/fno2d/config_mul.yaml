@@ -1,0 +1,21 @@
+model: fno2d
+exp_name: fno2d_pm25
+learning_rate: 5.0e-4     
+
+
+use_compile: false
+
+model_args:
+  in_channels: 23          
+  Tin:         6
+  Tout:        6
+  modes1:                  16    
+  modes2:                  16    
+  hidden_channels:         120
+  n_layers:                 4
+  lifting_channel_ratio:    2
+  projection_channel_ratio: 2
+  channel_mlp_expansion:    0.5
+  channel_mlp_dropout: 0.1
+
+  time_embed_d: 16

@@ -1,0 +1,19 @@
+model: regular_lamo
+exp_name: regular_lamo_pm25
+learning_rate: 5.0e-4     
+
+use_compile: false        
+
+model_args:
+  in_channels: 23        
+  height:      140
+  width:       124
+  Tin:         6
+  Tout:        6
+  time_embed_d: 16
+  embed_dims:   [192, 256, 320]  
+  depths:       [3, 4, 6]        
+  patch_sizes:  [2, 4, 4]        
+  mlp_ratios:   [4, 4, 4]         
+  drop_rate:      0.05
+  drop_path_rate: 0.1
